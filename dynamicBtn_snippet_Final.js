@@ -19,9 +19,10 @@
 
 					});
 				} else {
-
+					// ADD DATA ATTRIBUTE FOR BOOTSTRAP MODEL
 					$($this).attr('data-toggle', 'modal')
 					$($this).attr('data-target', '#myModal')
+					
 					$($this).text('Get More Info').css('background', '#999').addClass('not-in-stock');
 					$($this).closest('.row').find('.vehicleContainer h5').remove();
 

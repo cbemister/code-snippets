@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Resize image without squeeshing */  
+
+img {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
