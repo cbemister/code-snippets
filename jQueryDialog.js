@@ -6,10 +6,9 @@
 /* CSS */
 
 /* Hide Calculator, Chart, and Button on page  */
-.calculator-payment, .calculator-payment-chart, .ui-dialog #launchDialog   {
-    display: none;
+.gg-chat-bubble.gg-app ~ .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable {
+    display: none!important;
 }
-
 /* Show Calculator in Dialog Box */
 .ui-dialog .calculator-payment, .ui-dialog .calculator-payment-chart {
     display: initial;
@@ -19,31 +18,26 @@
 /* JavaScript */
 $(document).ready(function () {
 
-	
-	// Copy content to be displayed in dialog
-	var page = $('.page-bd').html();
+	$('.links-list.ddc-content.restricted').append('<a class="btn ddc-btn btn-default ddc-btn-default btn-xl ddc-btn-xlarge btn-block ddc-btn-block" href="#" target="_self" id="launchDialog">Explore Payments</a>')
+
+	var paymentCalculator= $('.dialog.calculator-payment')[0].outerHTML;
 
 	var $dialog = $('<div></div>')
-		.html(page)
+		.html(paymentCalculator)
 		.dialog({
 			modal: true,
 			resizable: false,
 			autoOpen: false,
 			title: 'Payment Calculator',
 			height: 600,
-			width: 800,
-			open: function () {
-
-				//$(this).load('/financing/calculator.htm');
-
-			}
+			width: 600
 		});
 
 	$('#launchDialog').click(function () {
 
+		var internetPrice = DDC.dataLayer.vehicles["0"].internetPrice;
 
-		$('[name="price"]').val('$' + '500').attr('autofocus', true).attr('disabled', true);
-		//$('[name="price"]').val('500').blur();
+		$('[name="price"]').val('$' + internetPrice).attr('autofocus', true).attr('disabled', true);
 
 		$dialog.dialog('open');
 
@@ -51,7 +45,7 @@ $(document).ready(function () {
 		return false;
 	});
 
-	// Add
-	$('.calculator-payment').prepend('<p>Calculate your estimated payment by changing the down payment, interest rate, or term.</p>');
+
+	$('.calculator-payment').prepend('<p>Estimate your monthly payment by changing the down payment, interest rate, or term.</p>');
 
 });
